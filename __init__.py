@@ -31,7 +31,7 @@ class Pi(MycroftSkill):
           value = s.decode('UTF-8')
           a = len(value)
           self.log.info(f'Length of temperature: {a}')
-          value = value[:(a-2)] + "." + value[2:]
+          value = value[:(a-3)] + "." + value[-3]
 
         if property == 'operating system':
           name = 'operating system'
