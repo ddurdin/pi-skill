@@ -33,6 +33,7 @@ class Pi(MycroftSkill):
           value = s.decode('UTF-8')
           if scale == 'fahrenheit':
             self.log.info("Converting")
+            value = round(value * 9/5 + 32000)
           a = len(value)
           self.log.info(f'Length of temperature: {a}')
           value = value[:(a-4)] + "." + value[-4:] + "degrees"
