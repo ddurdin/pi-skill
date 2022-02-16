@@ -31,12 +31,12 @@ class Pi(MycroftSkill):
           name = 'temperature'
           s = subprocess.check_output(["cat", "/sys/class/thermal/thermal_zone0/temp"])
           value = s.decode('UTF-8')
+          value = round(int(value)/1000)
           if scale == 'fahrenheit':
             self.log.info("Converting")
-            value = str(round(int(value) * 9/5 + 32000))
-          a = len(value)
-          self.log.info(f'Length of temperature: {a}')
-          value = value[:(a-4)] + "." + value[-4:] + " degrees"
+            value = value * 9/5 + 32
+          value = str(value)
+          value = value + " degrees"
 
         if property == 'operating system':
           name = 'operating system'
