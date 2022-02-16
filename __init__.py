@@ -30,6 +30,7 @@ class Pi(MycroftSkill):
           s = subprocess.check_output(["cat", "/sys/class/thermal/thermal_zone0/temp"])
           value = s.decode('UTF-8')
           a = len(value)
+          self.log.info(f'Length of temperature: {a}')
           value = value[:(a-2)] + "." + value[2:]
 
         if property == 'operating system':
