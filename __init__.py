@@ -11,15 +11,15 @@ class Pi(MycroftSkill):
         self.log.info(f'"Property: "{property}')
         name = ''
         value = ''
-        if property == 'model number':
-          name = 'model number'
+        if property == 'model':
+          name = 'model'
           p4 = subprocess.Popen(['cat','/proc/cpuinfo'],stderr=subprocess.PIPE, universal_newlines=True,stdout=subprocess.PIPE)
           p5 = subprocess.Popen(["grep", "Model"], stdin=p4.stdout, stdout=subprocess.PIPE)
           p6 = subprocess.Popen(['cut','-d',' ','-f','2-'], stdin=p5.stdout, stdout=subprocess.PIPE)
           output = p6.communicate()
           value = output[0].decode('UTF-8') 
-        if property == 'serial' number:
-          name = 'serial number'
+        if property == 'serial':
+          name = 'serial'
           p1 = subprocess.Popen(['cat','/proc/cpuinfo'],stderr=subprocess.PIPE, universal_newlines=True,stdout=subprocess.PIPE)
           p2 = subprocess.Popen(["grep", "Serial"], stdin=p1.stdout, stdout=subprocess.PIPE)
           p3 = subprocess.Popen(['cut','-d',' ','-f','2'], stdin=p2.stdout, stdout=subprocess.PIPE)
@@ -37,17 +37,19 @@ class Pi(MycroftSkill):
           p10 = subprocess.Popen(['sed','s/["()/]/ /g'], stdin=p9.stdout, stdout=subprocess.PIPE)
           output = p10.communicate()
           value = output[0].decode('UTF-8')
-        if property == 'kernel version':
-          name = 'kernel version'
+
+        if property == 'kernel':
+          name = 'kernel'
           s = subprocess.check_output(["uname", "-r"])
           value = s.decode('UTF-8')
         if property == 'firmware version':
-          name = 'firmware version'
+          name = 'firmware'
           p11 = subprocess.Popen(['vcgencmd','version'],stderr=subprocess.PIPE, universal_newlines=True,stdout=subprocess.PIPE)
           p12 = subprocess.Popen(["grep", "version"], stdin=p11.stdout, stdout=subprocess.PIPE)
           p13 = subprocess.Popen(['cut','-d',' ','-f','2'], stdin=p12.stdout, stdout=subprocess.PIPE)
           output = p13.communicate()
           value = output[0].decode('UTF-8')
+
         self.speak_dialog('pi', data={
             'name': name,
             'value': value,
