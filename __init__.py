@@ -29,6 +29,9 @@ class Pi(MycroftSkill):
           name = 'temperature'
           s = subprocess.check_output(["cat", "/sys/class/thermal/thermal_zone0/temp"])
           value = s.decode('UTF-8')
+          a = len(value)
+          value = value[:a-2] + "." + value[3:]
+
         if property == 'operating system':
           name = 'operating system'
           p7 = subprocess.Popen(['cat','/etc/os-release'],stderr=subprocess.PIPE, universal_newlines=True,stdout=subprocess.PIPE)
@@ -37,8 +40,6 @@ class Pi(MycroftSkill):
           p10 = subprocess.Popen(['sed','s/["()/]/ /g'], stdin=p9.stdout, stdout=subprocess.PIPE)
           output = p10.communicate()
           value = output[0].decode('UTF-8')
-          a = len(value)
-          value = value[:a-2] + "." + value[3:]
 
         if property == 'kernel':
           name = 'kernel'
