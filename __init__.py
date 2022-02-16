@@ -31,7 +31,7 @@ class Pi(MycroftSkill):
           name = 'temperature'
           s = subprocess.check_output(["cat", "/sys/class/thermal/thermal_zone0/temp"])
           value = s.decode('UTF-8')
-          if scale == "fahrenheit":
+          if scale == 'fahrenheit':
             self.log.info("Converting")
           a = len(value)
           self.log.info(f'Length of temperature: {a}')
