@@ -37,6 +37,8 @@ class Pi(MycroftSkill):
           p10 = subprocess.Popen(['sed','s/["()/]/ /g'], stdin=p9.stdout, stdout=subprocess.PIPE)
           output = p10.communicate()
           value = output[0].decode('UTF-8')
+          a = len(value)
+          value = value[:a-2] + "." + value[3:]
 
         if property == 'kernel':
           name = 'kernel'
