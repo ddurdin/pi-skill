@@ -8,7 +8,9 @@ class Pi(MycroftSkill):
     @intent_file_handler('pi.intent')
     def handle_pi(self, message):
         property = message.data.get('property')
-        self.log.info(f'"Property: "{property}')
+        scale = message.data.get('scale')
+        self.log.info(f'Property: {property}')
+        self.log.info(f'Scale: {scale}')
         name = ''
         value = ''
         if property == 'model':
@@ -29,6 +31,8 @@ class Pi(MycroftSkill):
           name = 'temperature'
           s = subprocess.check_output(["cat", "/sys/class/thermal/thermal_zone0/temp"])
           value = s.decode('UTF-8')
+          if scale == "fahrenheit":`
+            print("Need to conert")
           a = len(value)
           self.log.info(f'Length of temperature: {a}')
           value = value[:(a-4)] + "." + value[-4:] + "degrees"
