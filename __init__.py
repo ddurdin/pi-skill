@@ -42,7 +42,7 @@ class Pi(MycroftSkill):
           name = 'kernel'
           s = subprocess.check_output(["uname", "-r"])
           value = s.decode('UTF-8')
-        if property == 'firmware version':
+        if property == 'firmware':
           name = 'firmware'
           p11 = subprocess.Popen(['vcgencmd','version'],stderr=subprocess.PIPE, universal_newlines=True,stdout=subprocess.PIPE)
           p12 = subprocess.Popen(["grep", "version"], stdin=p11.stdout, stdout=subprocess.PIPE)
