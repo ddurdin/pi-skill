@@ -5,12 +5,12 @@ Query the raspberry pi for environmental data
 Query the raspberry pi for environmental data such as temperature, serial number, model number, kernel version, firmware version, and operating system
 
 ## Examples
-* "What is the {temperature} of the raspberry pi"
-* "What is the {serial number} of the raspberry pi"
-* "What is the {model number} of the raspberrypi"
-* "What is the {kernel version} of the raspberry pi"
-* "What is the {firmware version} of the raspberry pi"
-* "What is the {operating system} of the raspberry pi"
+* "What is the computer temperature"
+* "What is the computer serial"
+* "What is the computer model"
+* "What is the comouter kernel"
+* "What is the computer firmware"
+* "What is the computer operating system"
 
 ## Credits
 DFD
